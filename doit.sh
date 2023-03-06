@@ -1,13 +1,6 @@
-sudo virt-install \
-  --name centos \
-  --disk path=/var/lib/libvirt/images/centos-packer.qcow2,size=32 \
-  --ram 2048 \
-  --vcpus 2 \
-  --os-variant centos7.0 \
-  --sound none \
-  --rng /dev/urandom \
-  --virt-type kvm \
-  --import \
-  --wait 0 \
-  --cpu host \
-  --network type=direct,source=enp109s0,source_mode=bridge,model=virtio
+#!/bin/bash
+#
+
+packer init .
+packer fmt .
+packer build centos.json.pkr.hcl
